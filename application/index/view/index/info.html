@@ -1,0 +1,90 @@
+{extend name="common/layout"/}
+{block name="info"}
+<div class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="http://www.52minq.com/goods/index.php"> <i class="fa fa-home"></i>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.52minq.com/category/1.html">未分类</a>
+        </li>			<li>
+            <a href="http://www.52minq.com/goods/38.html#">耐克正品跑鞋</a>
+        </li>
+    </ul>
+    <div class="row">
+        <div id="content" class="product-detail col-sm-12">
+            <div class="row"  id="center">
+            </div>
+            <ul class="nav nav-tabs" id="bat_top">
+                <li class="active">
+                        <a href="" data-toggle="tab" aria-expanded="true">商品描述</a>
+                </li>
+                <li class="">
+                        <a href="" data-toggle="tab" aria-expanded="false">商品属性</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="bat_top1"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function(){
+     var id = "{$id}";
+             $.ajax({
+                 type:"get",
+                 url:apiUrl+"info/"+id,
+                 success:function(result){
+                    if(result.status !=200){
+                        alert(result.msg);
+                    }else{
+                        var data = result.data;
+                        var str = "";
+                        var price="";
+                        var bottom = "";
+                        var bottom1="";
+                        var url="/shopping/public/static/upload/";
+                        for(var i=0; i<data.length;i++){
+                            str+='<div class="col-sm-5">';
+                            str+='<div class="elevate-zoom-wrapper">';
+                            str+='<div class="elevate-zoom-preview">';
+                            str+='<a href="javascript:;">';
+                            str+=' <img id="elevate-zoom" src="'+url+data[i].image_file+'" data-zoom-image="/Public/Thumb/Gallery/2016-08-30/big_57c51b445e0aa.jpg" class=" img-responsive" style="width:200px;">';
+                            str+='</a>';
+                            str+='</div>';
+                            str+='<div id="product-thumbnail-gallery">';
+                            str+='<a data-zoom-image="/Public/Thumb/Gallery/2016-08-30/big_57c51b445e0aa.jpg" data-image="/Public/Thumb/Gallery/2016-08-30/medium_57c51b445e0aa.jpg" data-upate="" class="elevatezoom-gallery" href="http://www.52minq.com/goods/38.html">';
+                            str+='<img src="'+url+data[i].image_thumb+'" width="60"></a><a data-zoom-image="/Public/Thumb/Gallery/2016-08-30/big_57c51b4cd8ab2.jpg" data-image="/Public/Thumb/Gallery/2016-08-30/medium_57c51b4cd8ab2.jpg" data-upate="" class="elevatezoom-gallery" href="http://www.52minq.com/goods/38.html">'
+                            str+='</div>';
+                            str+='</div>';
+                            
+                            price='<div class="col-sm-7 product-info"><div class="col-sm-7 product-info">';
+                            price+='<h1>'+data[i].title+'</h1>';
+                            price+='<ul class="product-brief-wrapper"><li><span>型  号 UPC</span>'+data[i].upc+'</li>';
+                            price+='<li><span>库存状态</span>'+data[i].stock_status_id+'</li></ul>';
+                            price+='<div class="product-price-wrapper"><span class="price-new" id="special_price">￥'+data[i].price+'</span><span class="price-old">￥'+data[i].price+200+'</span></div><hr>';
+                            price+='<div id="product"><form action="http://www.52minq.com/Checkout/addCart.html" method="post"><input type="hidden" name="goods_id" value="38" id="goods_id"><hr><div class="product-cart-action"><div class="quantity-input-wrapper">';
+                            price+='<input type="text" name="quantity" value="1" placeholder="数量" id="input-quantity" class="form-control"><a href="http://www.52minq.com/goods/38.html#" class="quantity-up">+</a><a href="http://www.52minq.com/goods/38.html#" class="quantity-down">-</a>';
+                            price+='</div><button type="submit" id="button-cart" data-loading-text="正在加载..." class="btn btn-primary">加入购物车</button></div></form></div></div></div>';
+                            
+                            bottom1+='<div class="tab-pane active" id="tab-description product">&lt;p&gt;'+data[i].productDesc+'&lt;br&gt;&lt;/p&gt;</div><div class="tab-pane" id="tab-specification"><table class="table table-bordered"><thead><tr>';
+                            bottom1+='<td colspan="2"> <strong>基本属性</strong></td></tr></thead><tbody><tr><td>鞋跟高度</td>';
+                            bottom1+='<td>'+data[i].length+data[i].width+data[i].height+'</td></tr><tr><td>做工质量</td>';
+                            bottom1+='<td>'+data[i].meta_title+'</td></tr></tbody></table></div>';
+                        };
+                        
+                        $("#center").append(str);
+                        $("#center").append(price);
+                        $("#bat_top1").append(bottom1);
+                        $("#product").append(productDesc);
+                    }
+                 } 
+             })
+                        
+    })
+           
+</script>  
+            
+{/block}

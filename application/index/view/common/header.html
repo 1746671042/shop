@@ -1,0 +1,125 @@
+
+    <body class="common-home">
+
+        <nav id="top">
+            <div class="container">
+                <div id="top-links" class="nav pull-right">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="http://www.52minq.com/"> <i class="fa fa-phone"></i>
+                            </a>
+                            <span class="hidden-xs hidden-sm hidden-md">123456789</span>
+                        </li>
+                        <li class="dropdown">
+                            <a href="http://www.52minq.com/" title="会员中心" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user"></i>
+                                <span class="hidden-xs hidden-sm hidden-md">会员中心</span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+
+                                <li>
+                                    <a href="{:url('index/index/register')}">会员注册</a>
+                                </li>
+                                <li>
+                                    <a href="http://www.52minq.com/login.html">会员登录</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="http://www.52minq.com/" id="wishlist-total" title="收藏（0）">
+                                <i class="fa fa-heart"></i>
+                                <span class="hidden-xs hidden-sm hidden-md"></span></a><a href="http://www.52minq.com/collection.html">收藏（<span id="my_collection">0</span>）</a>
+
+                        </li>
+                        <li>
+                            <a href="http://www.52minq.com/cart.html" title="购物车">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="hidden-xs hidden-sm hidden-md">购物车</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.52minq.com/order.html" title="结账">
+                                <i class="fa fa-share"></i>
+                                <span class="hidden-xs hidden-sm hidden-md">结账</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="http://www.52minq.com/message.html" title="留言" target="_blank">
+                                <i class="fa fa-qq"></i>
+                                <span class="hidden-xs hidden-sm hidden-md">留言</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div id="logo">
+                            <a href="http://www.52minq.com/">
+                                <img src="__STATIC__/index/image//logo3.png" title="BuyPlus(败家Shopping）" alt="BuyPlus(败家Shopping）" class="img-responsive">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 mini-cart" id="cart_reflush">
+                        <div id="cart">
+                            <a href="http://www.52minq.com/cart.html" class="cart-info">
+                                <span class="cart-icon"> <i class="fa fa-shopping-cart"></i>
+                                </span>
+                                <span id="cart-total">0 个商品 - ￥0</span>
+                            </a>
+                            <ul class="cart-content dropdown-menu hidden-sm hidden-xs" id="cart_reflush">
+                                <li>
+                                    <p class="text-center empty">您的购物车内没有商品！</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-menu-wrapper">
+            <div class="container">
+                <div class="main-menu-mobile">
+                    菜单
+                    <span class="main-menu-toggle"> <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="main-menu-container">
+                    <ul class="main-menu">
+                        <li class="parent">
+                            <a href="http://www.52minq.com/Shop/index.html">首页</a>
+                        </li>
+                    </ul>
+                </div>
+                <script>
+                    $("body").on("mouseenter",".sub-menu>li",function(){
+                        $(this).parent().find('ul.second-menu').hide();
+                        $(this).find('ul.second-menu').show();
+                    })
+//                    $('.sub-menu>li').mouseenter(function (e) {
+//                        $(this).parent().find('ul.second-menu').hide().eq($(this).index()).show();
+//                    });
+                </script>
+                <div id="search" class="input-group">
+                    <form id="goods_search_form" action="http://www.52minq.com/search/index.html">
+                        <input type="text" name="keywords" value="" placeholder="搜索" class="form-control">
+                    </form>
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" id="goods_search_button"> <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#goods_search_button').click(function () {
+                $('#goods_search_form').submit();
+            });
+        </script>
